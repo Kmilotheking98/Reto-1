@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Encriptador de texto</title>
+  </head>
+  <body>
+    <h1>Encriptador de texto</h1>
+    <label for="text">Texto a encriptar:</label>
+    <br />
+    <input type="text" id="text" />
+    <br />
+    <button onclick="encrypt()">Encriptar</button>
+    <button onclick="decrypt()">Desencriptar</button>
+    <br />
+    <label for="result">Resultado:</label>
+    <br />
+    <textarea id="result" rows="5" cols="50"></textarea>
+
+    <script>
+      function encrypt() {
+        const text = document.getElementById("text").value;
+        const result = document.getElementById("result");
+        result.value = runCipher(text);
+      }
+
+      function decrypt() {
+        const text = document.getElementById("text").value;
+        const result = document.getElementById("result");
+        result.value = runCipher(text);
+      }
+
+      function runCipher(text) {
+        let result = "";
+
+        for (let i = 0; i < text.length; i++) {
+          let char = text.charCodeAt(i);
+          if (char >= 65 && char <= 90) {
+            result += String.fromCharCode(90 - (char - 65));
+          } else if (char >= 97 && char <= 122) {
+            result += String.fromCharCode(122 - (char - 97));
+          } else {
+            result += text.charAt(i);
+          }
+        }
+
+        return result;
+      }
+    </script>
+  </body>
+</html>
